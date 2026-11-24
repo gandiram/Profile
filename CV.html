@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gandi Ramakrishna</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Tinos:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: formal academic CV. Navy letterhead band with framed portrait, a floating figures card,
+   then a two-column sheet: sidebar for contact/IDs/skills, main column for projects, career and research.
+   Single light theme by choice, like a printed CV. */
+:root{
+  --navy:#14284b; --navy-2:#1f3a68; --gold:#b08d3c; --ink:#111111; --muted:#50555f;
+  --paper:#ffffff; --page:#eef0f3; --rule:#dfe2e7; --tint:#f6f4ee;
+  --display:"Cormorant Garamond","Times New Roman",serif;
+  --serif:"Tinos","Times New Roman",Times,serif;
+  --sans:"Source Sans 3","Segoe UI",Arial,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.6}
+a{color:var(--navy-2);text-underline-offset:3px}
+a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+
+/* letterhead */
+.band{background:linear-gradient(180deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:22px 0 96px;position:relative}
+.band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--gold)}
+.topnav{display:flex;gap:22px;justify-content:flex-end;flex-wrap:wrap;font-family:var(--sans);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+.topnav a{color:#d6deea;text-decoration:none}
+.topnav a:hover{color:#fff}
+.head{display:grid;grid-template-columns:190px 1fr;gap:40px;align-items:center;margin-top:34px}
+.portrait{width:190px;height:190px;border-radius:50%;padding:5px;background:var(--gold);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.portrait img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--navy);display:block}
+.eyebrow{font-family:var(--sans);font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.head h1{font-family:var(--display);font-weight:700;font-size:clamp(42px,6.4vw,68px);line-height:1;margin:8px 0 10px;letter-spacing:.01em}
+.head .title{font-family:var(--serif);font-size:19px;color:#e4e9f1;font-style:italic}
+.head .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{font-family:var(--sans);font-size:14px;font-weight:600;letter-spacing:.03em;padding:9px 16px;border-radius:2px;text-decoration:none;border:1px solid rgba(255,255,255,.55);color:#fff}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#fff}
+.btn:hover{filter:brightness(1.08)}
+
+/* figures card */
+.figures{position:relative;margin-top:-58px;background:var(--paper);border-top:3px solid var(--gold);box-shadow:0 12px 32px rgba(20,40,75,.14);display:grid;grid-template-columns:repeat(6,1fr)}
+.figures div{padding:20px 8px;text-align:center;border-right:1px solid var(--rule)}
+.figures div:last-child{border-right:0}
+.figures b{display:block;font-family:var(--display);font-size:42px;line-height:1;color:var(--navy);font-variant-numeric:lining-nums tabular-nums}
+.figures span{font-family:var(--sans);font-size:13px;color:var(--muted);letter-spacing:.03em}
+
+/* sheet */
+.sheet{display:grid;grid-template-columns:310px 1fr;gap:0;margin:28px auto 40px;background:var(--paper);box-shadow:0 12px 32px rgba(20,40,75,.10)}
+aside{background:var(--tint);padding:34px 28px;border-right:1px solid var(--rule)}
+main{padding:34px 44px}
+.sec + .sec{margin-top:40px}
+.sec h2{font-family:var(--display);font-size:30px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.sec h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+aside .sec + .sec{margin-top:30px}
+aside h2{font-size:23px;margin-bottom:12px}
+.side-list{list-style:none;padding:0;margin:0;font-size:15.5px}
+.side-list li{padding:7px 0;border-bottom:1px dotted #cfc9b8}
+.side-list li:last-child{border-bottom:0}
+.side-list small{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.side-list a{word-break:break-word}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tags span{font-family:var(--sans);font-size:13px;padding:3px 9px;background:var(--paper);border:1px solid #d8d1bd;border-radius:2px}
+.skill-group + .skill-group{margin-top:14px}
+.skill-group h3{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+
+.summary{font-size:18px;text-align:justify;hyphens:auto}
+.summary b{color:var(--navy)}
+
+/* projects */
+.project{border:1px solid var(--rule);border-top:3px solid var(--navy);padding:24px 26px;background:var(--paper)}
+.project + .project{margin-top:22px}
+.ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap}
+.project h3{font-family:var(--display);font-size:28px;font-weight:700;color:var(--navy);line-height:1.1}
+.kind{font-family:var(--sans);font-size:13.5px;color:var(--muted);margin-top:4px}
+.live{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:.03em;padding:8px 14px;background:var(--navy);color:#fff;text-decoration:none;border-radius:2px;white-space:nowrap}
+.live:hover{background:var(--navy-2)}
+.url{font-family:var(--sans);font-size:13.5px;margin-top:8px;word-break:break-all}
+.objective{margin:16px 0 18px;padding:14px 18px;background:var(--tint);border-left:3px solid var(--gold);font-size:16.5px}
+.objective b{display:block;font-family:var(--sans);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
+.feat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 26px;font-size:15.5px}
+.feat b{display:block;font-family:var(--sans);font-size:14px;color:var(--navy)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.chips span{font-family:var(--sans);font-size:12.5px;padding:3px 10px;border-radius:20px;background:#eef2f8;color:var(--navy-2)}
+.stat{font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:12px}
+.older{font-size:15.5px;margin-top:18px;color:var(--muted)}
+.older b{color:var(--ink)}
+
+/* timeline */
+.timeline{position:relative;padding-left:26px}
+.timeline::before{content:"";position:absolute;left:6px;top:8px;bottom:8px;width:2px;background:var(--rule)}
+.job{position:relative;padding-bottom:20px}
+.job:last-child{padding-bottom:0}
+.job::before{content:"";position:absolute;left:-26px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--paper);border:3px solid var(--navy)}
+.job.current::before{background:var(--gold);border-color:var(--gold)}
+.job .when{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:.06em;color:var(--gold);text-transform:uppercase}
+.job h3{font-size:18.5px;font-family:var(--serif);font-weight:700}
+.job .r{font-style:italic;color:var(--muted);font-size:15.5px}
+.job p,.job ul{font-size:15.5px}
+.job ul{margin:4px 0 0;padding-left:18px}
+
+/* education */
+.edu{display:grid;gap:12px}
+.edu div{display:grid;grid-template-columns:1fr auto;gap:4px 20px;padding:14px 18px;border:1px solid var(--rule);border-left:3px solid var(--gold)}
+.edu h3{font-size:18px}
+.edu .yr{font-family:var(--sans);font-weight:700;color:var(--navy);text-align:right;font-size:14px}
+.edu p{font-size:15.5px;color:var(--muted)}
+.edu .sc{font-family:var(--sans);font-size:14px;text-align:right;color:var(--ink)}
+
+/* publications */
+h4{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);margin:24px 0 6px}
+h4:first-of-type{margin-top:0}
+ol.pubs{margin:0;padding:0;list-style:none;counter-reset:p}
+ol.pubs li{counter-increment:p;display:grid;grid-template-columns:32px 1fr 48px;gap:6px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:15.5px}
+ol.pubs li::before{content:counter(p) ".";font-family:var(--sans);color:var(--gold);font-weight:700}
+ol.pubs .y{text-align:right;font-family:var(--sans);font-size:13.5px;font-weight:600;color:var(--navy)}
+ol.pubs i{color:var(--muted)}
+ul.plain{margin:0;padding-left:18px;font-size:15.5px}
+ul.plain li + li{margin-top:6px}
+.muted{color:var(--muted)}
+.ix{display:inline-block;font-family:var(--sans);font-size:11.5px;font-weight:700;letter-spacing:.04em;color:var(--navy);background:#f3ecda;border:1px solid #dcc995;border-radius:2px;padding:0 6px;margin-left:4px;vertical-align:1px;font-style:normal}
+
+footer{text-align:center;font-family:var(--sans);font-size:13px;color:var(--muted);padding:0 0 40px}
+footer .rule{width:60px;height:2px;background:var(--gold);margin:0 auto 12px}
+
+@media (max-width:960px){
+  .sheet{grid-template-columns:1fr}
+  aside{border-right:0;border-bottom:1px solid var(--rule)}
+  .figures{grid-template-columns:repeat(3,1fr)}
+  .figures div:nth-child(3){border-right:0}
+  .figures div:nth-child(-n+3){border-bottom:1px solid var(--rule)}
+}
+@media (max-width:640px){
+  .wrap{padding:0 16px}
+  .head{grid-template-columns:1fr;gap:18px;justify-items:start}
+  .portrait{width:130px;height:130px}
+  .topnav{justify-content:flex-start;gap:14px;font-size:12px}
+  main,aside{padding:26px 18px}
+  .feat{grid-template-columns:1fr}
+  .edu div{grid-template-columns:1fr}
+  .edu .yr,.edu .sc{text-align:left}
+  ol.pubs li{grid-template-columns:28px 1fr}
+  ol.pubs .y{grid-column:2;text-align:left}
+  .figures b{font-size:34px}
+}
+</style>
+</head>
+<body>
+
+<div class="band" id="top"><div class="wrap">
+  <nav class="topnav" aria-label="Sections">
+    <a href="#profile">Profile</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#education">Education</a><a href="#research">Research</a><a href="#training">Training</a>
+  </nav>
+  <div class="head">
+    <div class="portrait"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCADfAPADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD3+iiigAooooAKKKKACiiigAoopD0oAWiqd5qFpYRGS6uoYEH8UjgCuG1v4veHdLBW3aS9cHGY+EB/3j/TNAHotITgV4FqPx6umYi1t4YQeg++1cnc/FTXr9iZb+5Cnosb7AB9BinYdj6o3D1FRPdQRjLzxqP9pgK+WY/EmpXQ3nU5cn+BpGH67qpXU91ID51zNk/3ZM/rRYLH1el/aTHEd1C59FcGrIIPQ18b29/dWd0rwXs0UingiTNfRHwx8Yv4i09ra7cfbIRk/wC0PWkFj0KikzS0CCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKQnijtXnvjr4j2Xh6OWxgPm3uMHnhKANbxD4/wBG8Os0c8pklHVE/wAa8h8V/HbUJ90GjeXaoeN4G9/14H615prerXGq3LyTOzMxzzWYs0VrAwEIaXgZYcAU7DLmo+JdV1aUzXl7I7scl5X3N+A7Vjvcyu+XmdvqailZncswwT2pijJFAFpLqbcAhGfZRmtKyQEFZEcMf4jHkVn2lo8kgIYDmuqtA0UABxwPWmBQbT3Vt7mQx9ipA/GkltgqggznjrvNXZIC5yswI9AKZ5MiNlWz6gigDFKuswJZ2wepOa6nw14mu/DWoQ6la/OyH5kbI3DuM1lzQNwTt+gFRqxjBBUEH2pAez2XxxuLiTM9hDEnTAJNd5ofxE0rV0TdIIpG4wTXykZ3WT5RtGcADvWvpV2fPQhyj5yMdDRYLH2LHKkqhkYMD0IqSvB/DnxAm0ueGCeZgDwVkPykf0Ne2adfR6hZw3URyki5FJoRcooooAKKKKACiiigAooooAKKKKACiiigAoPSig9KAM/VbyPTtLuryRgqwxs2T9K+SfEOoy6pqdxcu+5pHJNfR3xUFw3gW6S3yAzqJSOyd/6V8u3TAyFVwFHA4pgV2JZj29wKimRfQ1cVdmHY/SmtBLO3yoxB9BRcFFvYyniGehp8cODkIOPWuisPDF9eSALC2D3IrvdD+G9vsWS8Bdj27VjOvGPU6KeGnI80tAykFYC3uBW5FbXVwBiB8+gXAr2zTvCGlWygfZYyR7VuR6PYxrhLdB/wGs1iG9jo+qpfEzwWHQNRdBm2fHYgU19DvmOHjYfUV7+2nwYx5Y/Cqc2j2zdYxmk68i1hoHgr6Hc4PyMcU6Pw7dSAExnB6Zr2ubQrYA5jBqo+mR/LtUACs3iWi/qcDwu/0Sa2uNrI3rkdqeYmt7czNGGUckjtXovijTGWNpIl+cA7T/SvLbi4fc8cikBjzg+lddGqpo4sRRdOVuhG+qPK7Ru25Qcoe4r6L+C2pXN/4aljnfcsDhUz2GK+altSr53A9xx2r6F+BAA0bUNsmVEigr74PNaM5z1+iiikIKKKKACiiigAooooAKKKKACiiigAoPSiigDD8W2f2/wpqVv/AHoGP5c18hXMfl3Ld8GvtOWJJomjkAZHUqw9Qa+dfiP8OLvQJH1GzQ3FiSSWUcx+zD+tAHndkfOukjdcgtgivUtP022jiQiBRwM8Vzvh7wbqNpcpe31m4tniWSKQDcrA89RXZpLDGoLOuB71zVrvY7sKktWaVjBEuMKo/Ctu3UADiuWj8Q6fFkE7sd89avQ+NtFQYeTZj+9XJ7Kbex6DrU1pc6yNT+FWBuBFc9a+MtJuOIpQfpzWtb6tbXHzJIDV8vLuZOalsXiDnmkKbqikvIUj3F8D61iaj4ysdOHzEyH+6nJNUlcnm0ubFxCcc1myoRn0rn3+JNrKSE0+8/4FEw/pTo/Fq3a/LCUB/vDBqJ0mzSnWjtcs3luswIYZBryTxpoTWV19pRMQueSP4TXqq6rDMcH5SPWm3ulRaxayWzRmQOuPlG4iqoqUJE1+WcLHhFtE0sir6cn6CvpL4Q6H/ZfhX7WWyb1/MAx90DgD+deNzeC9W0m6sbK6iVJrvcxXdlo03YG7HAzX0n4egt7PRLS0tZBJFDGEDDuR1r0Lo8hxaRrUUUUEhRRRQAUUUUAFFFFABRRRQAUUUUAFB6UUUARnivDviRJq99qlyhYGzQ7UQHpXuX9a4Hxzo5WGS7Rco5G7joazqNpJo2ocrbUup594H8RahpWiz2plM1skhQRuT8gx/Ce3euNTSbu48QX9vezTOBGZ4VMjYZS3Xr2z0rrdK0xrBLgM6lZZyy8dsU+/sJFu7XUIIzI8BKvGuNzxMMMAfUcH8Pes3U1VzoVLRpHBG0T7Z5UEJXnadqZJP1NWPskX2r7K1jf/AGjIUbWGD+nSuvbRrO4k82K6Nu55BkQoR+DVcjs/KXDaxbAeoHP86bqopUG+pyc3h97e4+zTJKG6Ah8j+oqtNo+ofa7SwsJ2juZ3IG1yo29yceldobjSLUZE82o3PaOFGbJ/kPrmr3hjSpjqr6neqq3Mo2pGpyIU7KPf1rJ1FqzSNG7sjD1HwF4wTSPMHiF7pYl3CDe4z7A1zlpoElzp0d5uZieDu+Zt3cV9BmP/AEfGOMVwc9n/AGLrFxJ9lafTLk7pUiXc0L/3gOpB74pRqtA6SZwT6BfQWSXSRyXALYaKNgGA+mP5Glh0rUHtJLprUQbThY5RlmH4iu++xeHpzvt9YW2Y9UaQIfybpTTpui7sy63DNjs064/Q1XtXtYn2CvdM5HTtIj1BP9JjkiYcAwuVP6HFWPh1f6zp+r39ytzNc2ke+CHzpCV3bh82M+ldDeyW627Q6Sv2m5YFYxGvyKf7zNjGB+daOkaJFo2lQ2qsGKLhmP8AEepNJ1Wl6lOk27dEY0kd5qviHUUku3DuyMZD1AI6D06V6Z4M019J0kwtK7qzkqXrmtK0mGXVPPUt58xVCD0wuef1r0mGNYkVFGAowK0ppt83Q568lFKNiaiiiug4wooooAKKKKACiiigAooooAKKKKACiiigBveoLi3iuYHhmQNG4wVPcVYpD0oBXWx5FrWlx6Vftaxyb40YkE9s9qii2MmHroPHFmsF9HcImFlX5iPUVyysR06Vy1o6Ho4aepqW1tbMeVJ+rGtVLDTsAtbxORyd43fzrBt5dwGOtZOueJZ7FTBFkN61ywjJux3SlFK7Oh1q+g061MnlBYVPIjXt+Fc5afEjQRqKozsoJxuZCAKykvbi/tmN3drErdRnBNUrDwhpFzOXurhpgMYVeM1soLqYe1lL4VoesS+LdMhtPNNxEU25yGya5U/EbTmuSn2G7OTgER9f1qK38LeG41zGsijsrPnH05qnqPhzRRIJYZ5Y2HPLZp8qe4vfT0R2dpqJurRZo1UFuRHKOcVZjubScfvbaJXHUFBXnqX9taQOIr4+YFwAxp+h+J7jUZ2tpIX8xTgMBxUOLSumWprms0dzM8EZzHHGv+6oFVHuC4wOlVpC2cHrTuI0BP1rGLd7m02rWR0XhaRF1EhlyzLwcdK7cda47wbFve4uCOAAozXZCvSpr3Txa7vMWiiitDEKKKKACiiigAooooAKKKKACiiigAoozRQAUUmaQtQBh+KdKOqaQ6RrmaP50Hr7V5RHcGOQxuDkHBB9a9y3AivKPiDY2Vnfi6tJVE0hHmxDseSD+lROPMjWlU5GY7T+S4kj5XqRUswstUKtLAhYd8VjRXqsu1uKcLnyX3oeK5nCx2qrdF2fQLAkOtqpI/GrdtJDZAKtmGx3EQNLY6hHNwSMVpo8XVSKz1T1N4yjbQj/ALci2kNpbZ9ohVaa/S44W0aP/tmBWj9pAX+H8qaZ4ifmC5qnK41J9zLj022lJd7VCT/eQGp0tY7QloY0TjsKtzXsMEXDD6VlyXbz8jhaizDmV0Sedhiz/hVeW/3uFzgVWubgKOuKzLsO+l30ykqEgfaR1zjirhTSeplVq6WR7T4P+znQYmhcOzElyPU//WxXRDrXkPhLXZtL0XT5JEOBAgdfblT/ACH516jp2pW+pW6z27gg9RnkV3JaHlSldl6ikzRQAtFFJ3oAWiiigAooooAKKKKACikzRmgA4oyKqXl/b2EJmuZVjQDqx61w+s/Ea3TNvp/yyscLJIMD8KaVyXJI7e8v7XT4vNu7iOFPVziufuPHejx58mRp/dRhfzNebXF1dakrnVZiyOeW3ZGR6fSsw38Vpan5C4H3ck4P4U0iZT7Hdap8TWRXSytgGIwrMc1xOJ9Whu5LmU+a3zlieSdrVDdXlszCVELsVHHQCmabdvJqAVwArqQFHT1/pQ1oLmdzPkdvOlReWjbDYHX3pVuiODWxJbxrcs5Xnj5sde1Sy6JFcR+ZHwT0xXPUlyPU76MeeN0YfmHO6OQqamj1C+Q8SZHpT5tEu4eiEj2qAW88Zw0bD6io5otF8kkXDqt+yY3j64oW/vj1eoI4pGPC1ajsLiQ8IfyqXJI0UJMeszEh5pNxp7Xzt8sa1PBokrn94QB+dbFppsFtghMt6kVEqiRrGlJmXaaTPckSTkqvXnvTdeVYbBbKEAGVgua6VhhMtwBXJamj32oFwcRRMsa+7E5P6Cii3OauZ4i0INo6SbTHh0sojK+1MYHB/wBZUOl6nd6NdCRS6DoykcGnXU8sVi7BiOR+sh/wqtHq+VxJGGBr0o3szxJSVz0iy8VQS2pmnwoGBkdya04da0+cgLcoGPZjg15Tc3qvpyiFQm2QEgD2NUoLsuN5Y8jpS5Lj9q0e5KwYZBBHtTs15P4e8R3tpcMhdnh/uuewFdanjW0S4SGaJ1YqCSOgzUuJpGomdZSVStdStL1Q0E6Pntnn8quZpWsWnfYdRScUd6BhRmqN5qlpY8TygPjhRya5LV/G6ohWzVpH3bNqdc4yMn39qdribOxub23tELSyAYHTPNcnq/jmODMVkqvIeM5zj/69cHqFzrerFgwdAT90naB+fWqMFoljcoLqYSM2MRocj8arl7mfPc0tb1i4v5sXTlxgMjdODXL3kEss6SLHKSpGOCciuu1G/VYYCsZVEPABPAPbr61kJqzxymLAK54LjP8APP8AOmmZySve5R1eR9thaKr+cyksgBzyfSq95a3LJGogkAzgkrgD8TxV6S8EepJI0Y3unBXjAH6fpUeoajI1soC/dPU44+mBTV7A0rogSxnMUfyAcYJ3DHX1q1b6a1tNHcyuFKMHHbODnv1qtHqF09tE/mlfl6qMHr61XlZ5Q+SzEg5PWla47pbHS6lcxWh8mNQ45jY5IHXj+QP41UtL42jIknEbjKn07EfoaNc2LDJI7qiKVYsxAAyifhWPZeJNOvGNjE4mZAWBAwD6gEjNZTpqcbM6KNWUJJo7a3u45FB4Iq15VvMOUWucso2mQy2j7gv3lPUVqwNKMDkH0ry5pxdme3CSnG6L4s7ZeiD8qlEEWOAAPYVAokPY1KI5D0FZuTNVElWONR0FRyzJGOv5Uht5W4FSQ6K0p3Sk49KSbG9DF1C/Eds8rfcQZPvVDSY4rtlNw3OQwAbGCcfXtVvxQti0sdibiOK2h/eXD7unoK5mz8VaFPflYbrylZyV81dv056V6eGp2XMzxcXV5nyrZHbajp7y2saxOOXHysD2Unt7t3xWT/Zdwp5j3fRgau390Wt4ZIZg6efIAVO4dFxVZdQuFydwIHOOn8q7Ip2PNm43BrOdoREV2MTkb1ODgH0FVrbT5hbqUdHOSCORj86L29lcxvkDAI4HU/jVLTrudEcB2yrZA9KepNo2Ny2s5o2UtsQnI++D1HtVjUtPma+O14iFRV+/g8D3rO+3XEyxqzkkycAcUzUdQK38+ZXPzkBQc0k3zFu3IaNpDeWr5WdFIPARyT+grrtK1vUYYwtxiVR13EZxnnvXm4v5YcszncegPOK3tOnuHtlJYhnCqB/vNn+QokmFNq56NbeIbSacwzFoJc4w44P0NbCkEZBBB7149c6xdDUJ2RgybyAD+VauleMprN1SZT5fcKePy7VLg7Fqsr2Zy13fX+oMRve1T77GU5kce47D64HvUczw29mBaMTIy7CM5LdwD/Mce2TWNq0s9tfSLG22B2LRbSDle3Tv2/nSWswiRiwJyMMo9PY0WTDmsNi1O9vCI5JXyvXPHH0qT7ckcg2guQeT71o22lxi1OozMziQYIB2gNjv35GOgqhBfW0UUyxhEcHqi8/mct/KmpaCcddTYv8Ac2kq5jZQxVgSuOtY0qubiEopZjxgDmtsX7nRI/OB4Krk5Ofzz/WqmpalH9ljEaYIOeFUfnhR/WkrhK10R6pZyxNp2Yn3lWBXHPXPpUFzpt49u4FpOSOR+7Nbs+oONPiLLwr4AXgdPYgfoazpr92Vtsa5PXKqf6U03YUrJmfaac0emxzXT+VEgJZjwBz68ise98W6VaxtDp9pLdydA7YRc/mc/kKQ6PJqF8TczErg7UBOOBkfrXQ3OjWdpZGS2to18uVWBGQdjr06+tLUtcu5w90niHxU+64kAhXG2IArGMADp9BVb/hHb/TXS4jnjDoQc5IwfxAruBNOvAYYPbaKj2vJPskf5ZODxiiwKotjH0nxebS7Qzj7LOp++vKN7Hrj9a9I0/xNpeouBPF9nf8A56Kd0Z/Ecj8a4HVvCwnt5p0OSFEpU56dG/WsOCx1GxTbBeutqTltnUfh3/OsalGM9zopYiVPbY+gUtVKhkfcpGQy8g1IIFWvKtG8ReIdDRGTy9SsjjAztbHr6CvSNA1+y8QQM1vmOeM4lgk4dD7+3vXn1MO4PQ9Sjioz9TTSFeDxWF4u8TQeHbPyUDNeTKfLAH3R61ralqC6dBnK+Y3TccAD1NeW+JNV0y5uT5d3Jc3kgwxR8j/AfStaFG+rMcViXHRHNR2Wp+KPNTzmhtRudhsZixHqQOeTRe/D1raVoor4PIuN24Kozj3YfyrtNB05be2hiAUF2RWOB7u36YFQySyzXE0okf52J+8fXj9K9BRPKlO2pwg0PxDpXFtPIFBziKZSPyDVp6br+uwkJe2yzRjOWMeG49xXSyedsx5smfdj/jWnY2zPahGJYMFXDH+8+P5Cqs0iFKMt0VbbOpHYilGXBbKSEcjp92rFlo8jNN+8AJP/ADyf/wCJqvOFj1K7kijRR5pHCDtxRazSqHO4cnpjiqSehnJx6G1baWRParLMAPNB4Uj/ANCx/Wq91p8Emo3JWcAK7EkhTj8mpdPmdpIzuwFcfdGO/tisma6l86XErgs7Hhj61NtS3blLsOlwTT7nmd0HJ2gDn6jdXU2unwJsIlddpZsHafurgdcVxUDEsisxJZwCSfeujiuCttI4Y/LBI3XuWxTYQaKhsYuB9qZiTk7UU/yc1D/Zklypa3m3IThQ/G73z0/MismWWQh2dyzH5RuNbOmPIi+YZGAVSAe6gD5jnr04+tN3RKs2cqzNfWx3YLocq565+tWLe3hitBNKRJKFJKscL/iaz9LdmujbuCh6kMMYHc1pavafZ0NwvCqAsg9Ceg9zjr9allxRbsb9LvR5k3YiaPa4Hp2P4H9DXIadGyQzu5ydxGfxrQ0e5a2mEfSObO3vtbFaa6TbwWTrIzBsH5eFx+fJpIb1L10f+JLbAfxAN+dZV0oMe3viumu7iBbG2jdVKoqJyAei59qqTXdquQqIOOyD/wCvTT0FJaoLeCa60LdsckEsDg9gKpLDM3SJ8fQ1saJf7lEQUkNIV5PqpqququrkYbrj7zf40RbFNLcqRWF0s6yLbSHBB+6fWt1dLuZbSSDyTloHjHT7yNuH6Gs5tTLnmMH6nP8APNbOn37NNANi8zrngfxR89qJXCFjmzpV2VyYT69RSHSLvtECQezCrA1GUAgKpwSM7R6/SlOoyg8Iv/fIp6k3jc0bfTLiRVDwsQxKNj0Yf4iuZl0a8tZW/wBGkIzhht4rprS/kNsxKrkJkfKOzD296panqJj1K5URjAfPQDk/hUq5bta5jW9vPp7lhbubaQ/MpX7h9as3Jm0q/stasSUmY+Wy45k9sd81MdWMalvLIx6N/wDqqsttdX15BdKpJ3AKC5+TntmlKN9xwnbVFDW08S+Kb6V7iKS2gzgRqDT9M8GPasoEBLnA3Mwra+0MskglGWEmC2Byfyqe31BhdRhVXG8fwj/CqUbIJVOZmpDYTRW7yjy1CxSyD5x1J2j+VZUekyBQplh49GyK05b+YaZO2SCLdPUdWrJF/P8A3z+ZNEbkzaJH0uRm5lh9fvVu2enOrRDzIjiRSct2Vc/zNc+b+4z98+nJNb1rfTbk+fq8vc9lFErhHlMKTT523tvhy7Fj+8HrTo9MmwB5kP8A38FQf2hceWvzkcZ+8f8AGki1K4IYl249z/jVK5Hu3Nez094raRnlQEYOVyfX0rLGku0i5nj5GeFJP8qtPdzHSpn3nPynnn1rNe8lLr8/3V9BUpM0k0aMOlAXMP785DA/6pvWtT7Cv2KdPNYH7OR/qzz81cjb3szXynd/GBjaOma3XlkbT5WDf8urnoP79Erija2xUuNLJ8lYpsuW/jXaDT9WVrLTorXcM3B5ZWB/dr/i2aoWNzM15EokIYjCjOOTxn8Ov4Vam1WO8mmeRVZAdqbhn5RwPf34Pem73BWsZenX9vNqCPIoYHs3XPbn8BWpr9iLiLy7a4BjiBzv/jY9TkdfSubvtN+xOJLZi0RYMjZ9SMD+dR6Tr0rRPC75YEg56nmp66F301NLTo4ItPUMNk4+8x+9n1BrJ1LUZI9Q2AnbIRkZqhdanPEzrAuZVYnBJ+Zaow3zahfW4lTawcA9u9AWb9D0G/f/AEO1z/EWb8BxVKXjnOa3NTSyDW0ZUApCv8R781EYbHyNxQHHqxNC2IlHUi0E/vYFHUyg/wA6oyZFw4H948/ia3tGuIIru32BVG/Hyj61VbUo1uGJJ6kdPekipLQo7eQAD6dK3dORxLbna3+vi6A/3DVcaogGMHP5Vq2mpKTCRux50Pf2IqpNkwSvucwYJt7/ALp8bj/CfWm+TLn/AFL4/wB01py6rtnmXa3yyMOvvTBqo9G/OndktIW0ikFo+6N/uN/CfUVR1mNhq9x8rc4PT2rcs9TBtmOG+656+wqvquqquovncMop6n0qU3ctpcpysoJjHX71dNpZbywSOAwP/j1Un1WIqQc/eHat+11BBCQOwPb3FOTdhRSvuc7eq63V0oBwJSelLaCQ3UY2OcsOxrY1DU0S9ulOQQc1Vt9VBuolBblh3NO7sFlctywTPpk4ET/8eyfwn+9Watlc5B8h8fStyTUs6bOcEf6Ln/x6sYamxwdgpRuE0rIYbC6LEiFxg1vW1ncBkzC335P1Ssg6nyPkHJrbtb/dLH8g5lb/ANAFErhBROY+xXPlD9w/5VElldqGHkOAatjVCU+4Kq3GqtjhBxT1IsrmobO4/syZPKOfKXHT1rJeyu8nEJ6eorRh1RpbWRdgybcnH0rIl1PCZwucc80lfUuSQyzsbyOZGES/eBPzj1roIoLqSzmQooP2aRcBh/erloNcCEnaOD6//Wro4dSYvLhVwYpR19MGh3KikjIS2ubRllZF3kFIwGBO5uBWffO1pGbfpKDtI9DVhdTa4liRgQm4EkHpitO7Wxj1e8vpggXeGBfnqBTb1EonLadeswEMjFlByMnPIrMutJvLW5aa2G8feyDzWh9ha11CW33qio+AWBHH5V0dnpbT+Wry27oTyNx/wqUFmmcHPI7yKzo0cy8EMMZp1ifM1W3iKNvbGQfr1rpNf8PX1jbm5tnSaJUVmVZACuTjp36VieGEl1HxADIWVoxkkgk+lK5qlZHUXym5v5jvwFYKB9BQymOEDJI71JLp0n2uZvtBGZG/5ZH1qaOwC/M125HcFVH82q01YwlF3JtHf5oGHQSj+Zqk53XbjH8Z/nW5pdpbLsZCxPmKPnb3PoKpyz6Vb3MgkRc5PG49c/71SnqXKOhWHB/rWzZnEcXtJAf1YVQhmtrhtyQoqdiR1/8AH63bR7JLcYji/wCWRPy/7Z9zTbZMIWe5zl3hb65GOkrfzqFhity/nsV1K6GyHPmnPyDrn/69V2ubI/8ALOH/AL9imnoS46jdO2mFlI6rJ/6DVLWOL9T6woc/hW/p81kzKoji5JH3B/dPvUGqfYGnty8UfzW644/+ypXdy+X3dzk5DtyB6g10do5MLZOfkbj8qqXEenkDESZ46E//ABVbdpbWnlkLHksrDG5j2HtTkxRiYuqt/wATS591B/QVRtX/ANNh4/jH866XUUsPt0hMSH92uSST2/3qzrf+zxfR7Y4/vDHGe/8AvUX0BrUn8zOmyg45s2/R6xGkPlEjqBxXWrNaLaP+7iA+yvxsH9/8ax/7QtRGQPKHsFX/AOJpRY5R8zNlG1idxJ9M5ras5XE8IPIM5/8ARYqsdWt2wGCbTxyAcZ/4DW3aXdq/kt5cJYSIeFHdMeg9KJNigjhmuXQEYHU1C1yx+8BtroZG0/LIYIeCRgRjjn6iqbrprcGGIDscY/8AZ6q4uVXEs3xAG9UZMA9iQKw5WEF7PEEVlVio388V1ttbW32dSiRY/wB4/wB4f7VZVxJZQahcb44SwkOTsB5/HNRfU02SsYU3lAf6pF9gK6K0DMyk9AszYUdtuKp3F5at8yiJQP4VRQf/AEGugtdaCrkhwDHLjb9B702wjY4wJIFyqvkD+Fcmkvr5tWljkMflQLGqhM/fIGMmr15ryyQnYr4fg5J/xqVb+0s4mVI4kZTg7UAP8if1oYrKxn6yTcalcXVuRtZyVOO3Qfyq3oOqXMdxHHIcKGznNNZAqEYwBxj9KpLIIpztPO1sce1FrC5m9yxrvjaQw/Zbc/ejRWbceMEn1rP0DVDJfSXGxN4A3cfeAOf6Vh67C1vfyDbwMHg+1P0CUxPyMhzzUGp2b30c95OyOFbeTtx0omupmwokYD2NYuoW8huYpIkYMy7cggcjj1qRLTVXUbo1II4YuM1aehk4u51umSBYoiGziSM/qawrtI11i6LIHbzWABHA5qfSIpRHvkuYVUdeGJ4IPpU+p29pHrF0Wvo1d3yCImOP0pdSnF2IhP5aAHG709K1LOdms2PpGjflJWculwk5a+Jyf+eP/wBeugstEVbOWMTTEeRjPlL/AHw39/15/wA4pyehEIu5i6q23Wr4f9Nj/SqpOV7YJro9T0IS6vcyZuDvfIAjTjger1V/sDOAGueP9hP/AIuhNWFKOpHpP+tU9P3g/kai1X/ly4B/cY/U1taXom2UENPxIp5jT/4uodT0hGitCJ5QBGR/qh6/79F1crlfKctP/qiPStiw+0OAySFeCPY5XofyqGbTIDG2Ls9O8P8A9etTStP27N11EOg4Deh9qbZMYlHVpD9rh4AJt1+6OP6n9ay4GH2uJvcHp71vanZQNJayfblUiEAjy2OetZ0WnwGVSt4x+kP+JovdBy2ehpjm1lH/AE6TD8nrnRkLXcW+kLICqTSvlJ04jUdee7ViPoKpDlo7oqBy2Yxn8MmlGSLlF2OfZuBx1H9MVt6dP8keSSN8JB9OSKYdLs8pEfO3nhVEoy3/AI5gfnWnBogW3DRpcjCxt95D0f6iiTQoxdznL4bL65AHSVv51Uc5X7tdDe6ATqFxua6G6UnGxCP/AEZVeTQB2mnGP+mKf/F1V0S4O5SsZAluOePmGPyrHvyTqNxg7h5h5rprPTYhGCt05G88eVj/ANmqlc6H/plw5E+DIcjag/8AZjUX1NLOxhFsqOP1rrbBYzHGrkZJdPzTNZTadp6JmWV1A7GU/wBI63tP0/T5AjRQ+cBuO5mZv4Pcr/KnKQRicJcovl4RwWBwB71JqXWG5UYW4jDcdmHBH6VpX8FpawgLbLGS2QxiBOfxZqddxWVrp8RvIp9zvkfOCA44bgdieetFw5dD/9k=" alt="Photograph of Gandi Ramakrishna"></div>
+    <div>
+      <div class="eyebrow">Curriculum Vitae</div>
+      <h1>Gandi Ramakrishna</h1>
+      <div class="title">Assistant Professor, CSE (AI &amp; ML) · Web Application Developer · Ph.D. Scholar</div>
+      <div class="cta">
+        <a class="btn gold" href="#projects">View live projects</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=gT1bZWgAAAAJ&amp;hl=en">Google Scholar</a>
+        <a class="btn" href="https://www.linkedin.com/in/ramakrishna-gandi-a320a915/">LinkedIn</a>
+        <a class="btn" href="https://github.com/gandiram">GitHub</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="wrap">
+  <div class="figures" aria-label="Key figures">
+    <div><b>17+</b><span>Years of teaching</span></div>
+    <div><b>15</b><span>Journal papers</span></div>
+    <div><b>8</b><span>Conference papers</span></div>
+    <div><b>2</b><span>Indian patents</span></div>
+    <div><b>2</b><span>Book chapters</span></div>
+    <div><b>2</b><span>Live web apps</span></div>
+  </div>
+
+  <div class="sheet">
+    <aside>
+      <div class="sec">
+        <h2>Contact</h2>
+        <ul class="side-list">
+          <li><small>Mobile</small>+91-7387796356</li>
+          <li><small>Email</small><a href="mailto:gandiramakrishna2@gmail.com">gandiramakrishna2@gmail.com</a></li>
+          <li><small>Official email</small>grkrishna.cse@gcet.edu.in</li>
+          <li><small>LinkedIn</small><a href="https://www.linkedin.com/in/ramakrishna-gandi-a320a915/">ramakrishna-gandi-a320a915</a></li>
+          <li><small>GitHub</small><a href="https://github.com/gandiram">github.com/gandiram</a></li>
+          <li><small>Blog</small><a href="https://e-learningtutorial-s.blogspot.com/">e-learningtutorial-s.blogspot.com</a></li>
+        </ul>
+      </div>
+      <div class="sec">
+        <h2>Technical Skills</h2>
+        <div class="skill-group"><h3>Programming</h3><div class="tags"><span>C</span><span>Java</span><span>Python</span><span>PHP</span><span>JavaScript</span></div></div>
+        <div class="skill-group"><h3>Web</h3><div class="tags"><span>HTML</span><span>CSS</span><span>PHP 8 / PDO</span><span>JSON APIs</span><span>Payment gateways</span><span>SEO</span></div></div>
+        <div class="skill-group"><h3>Databases</h3><div class="tags"><span>MySQL</span><span>Oracle (OCA certified, OCP qualified)</span></div></div>
+        <div class="skill-group"><h3>AI / ML</h3><div class="tags"><span>CNN</span><span>RNN / GRU</span><span>Attention models</span><span>Keras</span><span>Python</span><span>LLM APIs</span></div></div>
+        <div class="skill-group"><h3>Cloud &amp; deployment</h3><div class="tags"><span>Oracle Cloud</span><span>Ubuntu Linux</span><span>Apache</span><span>XAMPP / LAMP</span><span>DuckDNS</span><span>Shell scripting</span></div></div>
+      </div>
+      <div class="sec">
+        <h2>Research IDs</h2>
+        <ul class="side-list"><li><small>Scopus</small><a href="https://www.scopus.com/authid/detail.uri?authorId=58153602000">58153602000</a></li><li><small>Scopus (second ID)</small><a href="https://www.scopus.com/authid/detail.uri?authorId=57204914521">57204914521</a></li><li><small>ORCID</small><a href="https://orcid.org/0000-0001-7213-5789">0000-0001-7213-5789</a></li><li><small>Google Scholar</small><a href="https://scholar.google.com/citations?user=gT1bZWgAAAAJ&amp;hl=en">gT1bZWgAAAAJ</a></li><li><small>Web of Science</small><a href="https://www.webofscience.com/wos/author/record/P-1327-2015">P-1327-2015</a></li><li><small>IEEE Author</small><a href="https://ieeexplore.ieee.org/author/37089757380">37089757380</a></li><li><small>VIDWAN</small><a href="https://vidwan.inflibnet.ac.in/profile/604845">604845</a></li><li><small>Semantic Scholar</small><a href="https://www.semanticscholar.org/me/recommendations?folderIds=6525500">6525500</a></li><li><small>ResearchGate</small><a href="https://www.researchgate.net/profile/Ramakrishna-Gandi">Ramakrishna-Gandi</a></li><li><small>SciProfiles</small><a href="https://sciprofiles.com/profile/RamakrishnaGandi">4300042</a></li></ul>
+      </div>
+      <div class="sec">
+        <h2>Memberships</h2>
+        <ul class="side-list">
+          <li><small>IAENG</small>No. 214559</li>
+          <li><small>CSI</small>No. 5021250038</li>
+        </ul>
+      </div>
+      <div class="sec">
+        <h2>Languages</h2>
+        <ul class="side-list">
+          <li><small>Telugu</small>Native</li>
+          <li><small>English</small>Fluent: speak, read, write</li>
+          <li><small>Hindi</small>Basic</li>
+        </ul>
+      </div>
+    </aside>
+
+    <main>
+      <div class="sec" id="profile">
+        <h2>Professional Profile</h2>
+        <p class="summary">Assistant Professor in Computer Science &amp; Engineering with <b>more than 17 years of teaching experience</b>. I currently teach in the Department of CSE (AI &amp; ML) at Geethanjali College of Engineering and Technology, Hyderabad, and I am pursuing a Ph.D. at Annamalai University (synopsis completed) on <b>emotion recognition with deep learning</b>. Alongside teaching, I <b>designed, built and deployed two live web applications on my own</b>: an AI-assisted examination platform with automatic C / Java / Python code judging, and a complete e-commerce store with online payments.</p>
+      </div>
+
+      <div class="sec" id="projects">
+        <h2>Projects Developed &amp; Deployed</h2>
+
+        <article class="project">
+          <div class="ptop">
+            <div><h3>Online Test Portal</h3><div class="kind">AI-assisted online examination platform · Sole developer · 2026</div></div>
+            <a class="live" href="https://codetechhub.duckdns.org/TestPortal/">Visit live site ↗</a>
+          </div>
+          <div class="url"><a href="https://codetechhub.duckdns.org/TestPortal/">codetechhub.duckdns.org/TestPortal</a></div>
+          <div class="objective"><b>Objective</b>To help colleges conduct coding and MCQ tests online, mark students' C / Java / Python programs automatically, and use AI to find each student's weak skills, so that faculty and placement coordinators can give targeted practice and improve placement readiness.</div>
+          <ul class="feat">
+            <li><b>Automatic code judging</b>C, Java and Python programs are compiled and run on the server against hidden test cases, with time limits and a sandboxed runner.</li>
+            <li><b>Role-based access</b>Admin, Faculty and leadership (HOD, Dean, Principal, Placement Coordinator), Students and paid Members, each seeing only what they are allowed to see.</li>
+            <li><b>AI features</b>AI Advisor for skill gaps; AI-written company-style tests (TCS NQT, Infosys, Wipro, Zoho) and syllabus tests with server-verified coding problems.</li>
+            <li><b>Analytics</b>Skill analysis across 15 skills, heatmaps, charts, Excel reports and one-click remedial tests.</li>
+            <li><b>Payments</b>Premium membership at Rs. 50 a month or Rs. 400 a year through Razorpay.</li>
+            <li><b>Security</b>Hashed passwords, CSRF tokens, prepared SQL, login lockout, daily backups, DPDP Act 2023 privacy notice.</li>
+          </ul>
+          <div class="chips"><span>PHP 8</span><span>MySQL / MariaDB</span><span>HTML · CSS · JavaScript</span><span>gcc &amp; JDK</span><span>LLM API</span><span>Razorpay</span><span>Apache · Linux</span></div>
+          <div class="stat">80 source files · about 6,900 lines of code · 22 database tables</div>
+        </article>
+
+        <article class="project">
+          <div class="ptop">
+            <div><h3>Likith's Collections</h3><div class="kind">E-commerce fashion store · Sole developer · 2026</div></div>
+            <a class="live" href="https://likithcollections.duckdns.org/FashionStore/">Visit live site ↗</a>
+          </div>
+          <div class="url"><a href="https://likithcollections.duckdns.org/FashionStore/">likithcollections.duckdns.org/FashionStore</a></div>
+          <div class="objective"><b>Objective</b>To give a small clothing business its own online store, like Myntra or AJIO, where customers can browse, pay safely (UPI, cards, PayPal or cash on delivery) and track orders, while the owner manages products, orders and delivery without technical help.</div>
+          <ul class="feat">
+            <li><b>Shopping</b>Categories, search, filters, size-wise stock, add-ons with live price, bag, coupons, guest checkout, order tracking and invoices.</li>
+            <li><b>Payments</b>Razorpay (signature and webhook verified), PayPal, UPI QR and cash on delivery; 7 foreign currencies.</li>
+            <li><b>Owner &amp; Admin panels</b>Products, orders, shipping, customers, coupons, banners and 6 design templates; multi-store support.</li>
+            <li><b>SEO &amp; social selling</b>Structured data, sitemap, link previews, product feed for Instagram / Facebook Shop and Google Shopping.</li>
+            <li><b>Security</b>HTTPS, bcrypt, CSRF tokens, rate limiting, server-side price checks, images re-encoded to WebP.</li>
+            <li><b>Deployment</b>Oracle Cloud, Ubuntu 24.04 and Apache, one-command installer, Let's Encrypt certificate.</li>
+          </ul>
+          <div class="chips"><span>PHP 8</span><span>MariaDB / MySQL</span><span>HTML · CSS · JavaScript</span><span>Razorpay</span><span>PayPal</span><span>UPI QR</span><span>Oracle Cloud</span></div>
+        </article>
+
+        <p class="older"><b>Earlier:</b> Online Aptitude Test software, SRESCOE, Maharashtra (2014), as a team member: front end and random retrieval of questions per section, using PHP and MySQL on a LAMP server.</p>
+      </div>
+
+      <div class="sec" id="experience">
+        <h2>Teaching Experience</h2>
+        <div class="timeline"><div class="job current"><div class="when">Jul 2024 – Present</div><h3>Geethanjali College of Engineering and Technology (Autonomous), Hyderabad</h3><div class="r">Assistant Professor, CSE (AI &amp; ML)</div><p><b>Subjects:</b> Digital Forensics, Data Structures; labs in OOP, DAA and Data Structures.</p><ul><li>Course Coordinator, Moderator and Chief Examiner for Digital Forensics</li><li>Mentor for III B.Tech students; committee member for FDPs; organised a guest lecture on Digital Forensics</li></ul></div>
+<div class="job"><div class="when">Jun 2022 – Jun 2024</div><h3>Madanapalle Institute of Technology &amp; Science (UGC-Autonomous)</h3><div class="r">Assistant Professor, CSE</div><p><b>Subjects:</b> C Programming &amp; Data Structures, Android Application Development, Cloud Computing &amp; Distributed Systems.</p><ul><li>Bridge courses on Ruby on Rails, Django and Suricata IDS</li><li>Department GATE Coordinator; mentor for II B.Tech students</li></ul></div>
+<div class="job"><div class="when">Jun 2019 – Jun 2022</div><h3>Annamacharya Institute of Technology and Sciences (Autonomous), Tirupati</h3><div class="r">Assistant Professor, CSE</div><p><b>Subjects:</b> Data Structures, Design &amp; Analysis of Algorithms, Mobile Application Development, Problem Solving Programming.</p><ul><li>College SPOC Coordinator for NPTEL courses</li><li>Spoken Tutorial member; Class Coordinator for IV CSE</li></ul></div>
+<div class="job"><div class="when">Mar 2017 – Apr 2019</div><h3>CMR College of Engineering &amp; Technology, Hyderabad</h3><div class="r">Assistant Professor, CSE</div><p><b>Subjects:</b> Computer Programming through C, Data Structures, Cloud Computing, Web Technology.</p><ul><li>Department member for NIRF and R&amp;D</li><li>Guided mini-project and main-project batches; Class Coordinator for IV CSE</li></ul></div>
+<div class="job"><div class="when">Aug 2015 – Mar 2017</div><h3>Vignan&#x27;s Institute of Information Technology, Visakhapatnam</h3><div class="r">Assistant Professor, CSE</div><p><b>Subjects:</b> Data Structures, DAA, Computer Networks, Cloud Computing.</p><ul><li>Campus recruitment trainer in C</li><li>Class Coordinator for III and IV CSE; IQAC feedback analysis</li></ul></div>
+<div class="job"><div class="when">Dec 2012 – Jul 2015</div><h3>SRESCOE (Savitribai Phule Pune University), Maharashtra</h3><div class="r">Assistant Professor, Information Technology</div><p><b>Subjects:</b> Object Oriented Programming, Discrete Structures, Communication Language, FPL-II.</p><ul><li>Technical expert in C, C++ and Java workshops through IIT Bombay</li><li>Developed the Online Aptitude Test software and a sample Android app</li></ul></div>
+<div class="job"><div class="when">Jun 2010 – Nov 2012</div><h3>Bapatla Engineering College (Acharya Nagarjuna University)</h3><div class="r">Lecturer, CSE</div><p><b>Subjects:</b> Data Communications, Data Mining &amp; Data Warehousing, Web Technology, Computer Networks, Wireless Networks.</p><ul><li>Guided 4 B.Tech batches and 1 M.Tech student; GATE classes on Computer Networks</li><li>Trained faculty under Enhance Edu, IIIT Hyderabad</li></ul></div>
+</div>
+      </div>
+
+      <div class="sec" id="education">
+        <h2>Education</h2>
+        <div class="edu">
+          <div><h3>Ph.D. in Computer Science &amp; Engineering</h3><span class="yr">Pursuing</span><p>Annamalai University, Chidambaram, Tamil Nadu (part-time external). Synopsis completed.</p><span class="sc">GPA 7.17</span></div>
+          <div><h3>M.Tech. in Computer Science &amp; Engineering</h3><span class="yr">2008 – 2010</span><p>Bapatla Engineering College, Acharya Nagarjuna University. Thesis: <i>Automatic Histogram Threshold using Fuzzy Measures</i></p><span class="sc">74.77%</span></div>
+          <div><h3>B.Tech. in Computer Science &amp; Engineering</h3><span class="yr">2002 – 2006</span><p>Rao &amp; Naidu Engineering College, JNTU Hyderabad</p><span class="sc">61.87%</span></div>
+        </div>
+      </div>
+
+      <div class="sec" id="research">
+        <h2>Research &amp; Publications</h2>
+        <h4>Journal papers (15)</h4>
+        <ol class="pubs"><li><div><b>NeuroVision: Multimodal Emotion Recognition via Dynamic Frame Enhancement and EEG-Guided Fusion</b><br>Ramakrishna Gandi, A. Geetha, B. Ramasubba Reddy. <i>Computers, Materials &amp; Continua, Vol. 88, No. 2</i> <span class="ix">Scopus Q2 · WoS · SCIE</span></div><span class="y">2026</span></li><li><div><b>Intelligent Audio-based Emotion Recognition in Speech by Deep Learning and Feature Engineering Techniques</b><br>Ramakrishna Gandi, A. Geetha, B. Ramasubba Reddy. <i>International Journal of Computer Information Systems and Industrial Management Applications, Vol. 18, No. 19, pp. 14–33</i></div><span class="y">2026</span></li><li><div><b>Spontaneous Micro Facial Expression Detection using Attention-based Convolutional Gated Recurrent Neural Networks with RMSProp Optimization</b><br>Ramakrishna Gandi, A. Geetha, B. Ramasubba Reddy. <i>Journal of Information Systems Engineering and Management, Vol. 10, No. 7</i> <span class="ix">WoS</span></div><span class="y">2025</span></li><li><div><b>Comprehensive Survey on Recognition of Emotions from Body Gestures</b><br>Ramakrishna Gandi, A. Geetha, B. Ramasubba Reddy. <i>Journal of Informatics Education and Research, Vol. 5, No. 1</i> <span class="ix">WoS</span></div><span class="y">2025</span></li><li><div><b>A Comprehensive Analysis of Integrative Approaches for Emotion Recognition Utilizing Deep Learning Frameworks</b><br>Ramakrishna Gandi, A. Geetha, B. Ramasubba Reddy. <i>Eksplorium, Vol. 46, No. 1</i></div><span class="y">2025</span></li><li><div><b>Dynamic Sign Language Recognition Through an Ensemble of Deep Learning Techniques</b><br>Ramakrishna Gandi, Syed Sahail, Shaik Sameer, M. Shaik Yaseen, N. Usman. <i>African Journal of Biological Sciences, Vol. 6, Issue 2</i></div><span class="y">2024</span></li><li><div><b>Comparative Analysis of Stock Market Prediction Algorithms based on Twitter Data</b><br>R. Sai Venkat Ramana, M. Reddi Durga Sree, Ramakrishna Gandi, A. Sankar Reddy. <i>IJCA, Vol. 174, No. 29</i></div><span class="y">2021</span></li><li><div><b>Deceptive Call Recognition in a Network using Machine Learning</b><br>V. A. Narayana, Abhinav Chamakura, Ramakrishna Gandi. <i>Acta Technica CSAV, 63 No. 1B</i> <span class="ix">Scopus</span></div><span class="y">2018</span></li><li><div><b>Implementation of an Enhanced Sorting Technique to Sort Elements with DMA Model by Using Linux Based Environment</b><br>Gandi Ramakrishna, Uppe Nanaji, Nakka Thirupathi Rao, Debnath Bhattacharyya, Hye-jin Kim. <i>IJAST, Vol. 100, pp. 25–36</i></div><span class="y">2017</span></li><li><div><b>An Empirical Study to Design a Group Communication Framework for Securing Big Data in Hadoop Based Cloud Data Center</b><br>G. Ramakrishna. <i>IJARCSSE, Vol. 7, Issue 4</i></div><span class="y">2017</span></li><li><div><b>Studies on the Performance of LEACH, TEEN and APTEEN Protocols in Wireless Sensor Networks</b><br>Lomisi Manohar Babu, Nakka Thirupathi Rao, Gandi Ramakrishna, Ch. Rajkumar. <i>IJEAST, Vol. 2, Issue 1, pp. 132–135</i></div><span class="y">2016</span></li><li><div><b>A Novel Approach for Faculty Appraisal in Educational Data Mining using Clementine Tool</b><br>G. Ramakrishna. <i>IJEAT, Vol. 5, Issue 4</i></div><span class="y">2016</span></li><li><div><b>A Novel Approach for Professor Appraisal System in Educational Data Mining using WEKA</b><br>G. Ramakrishna. <i>IJARCET, Vol. 4, Issue 1</i></div><span class="y">2015</span></li><li><div><b>An Adaptive Edge Detection for Mycosis Fungoides Skin Disease</b><br>G. Ramakrishna. <i>IJCA, Vol. 94, No. 2</i></div><span class="y">2014</span></li><li><div><b>A Novel Sorting Technique to Sort Elements in Ascending Order</b><br>G. Ramakrishna. <i>IJEAT, Vol. 3, Issue 1</i></div><span class="y">2013</span></li></ol>
+        <h4>Conference papers (8)</h4>
+        <ol class="pubs"><li><div><b>Optimizing Lane Detection in Autonomous Vehicles Using OpenCV and Deep Learning</b><br>M. Rajesh Babu, Ramakrishna Gandi, G. Venu Gopal, Ashok Kumar Kondra. <i>WorldSUAS 2025, IEEE Madhya Pradesh Section</i> <span class="ix">Scopus</span></div><span class="y">2025</span></li><li><div><b>Methods for Recognizing Micro Facial Expressions Using Deep Learning</b><br>Ramakrishna Gandi, A. Geetha, B. Ramasubba Reddy. <i>ICCRTEE 2025, IEEE Madras Section</i> <span class="ix">WoS</span></div><span class="y">2025</span></li><li><div><b>Deep Learning Based Abstractive Text Summarization: A Survey</b><br>Uday Kiran, Ramakrishna Gandi, Lavanya M, Girish Bhagwant Desale, Upendar. <i>IEEE PiCET-2024, Parul University</i> <span class="ix">WoS</span></div><span class="y">2024</span></li><li><div><b>A Novel Approach for Depression Detection using Hybrid Deep Learning Model</b><br>Gandi Ramakrishna, T. Hari Krishna, S. Harsha Vardhan, D. Vishnu Vardhan, S. Sirisha. <i>ICRTETM 2024, OSIET Chennai</i></div><span class="y">2024</span></li><li><div><b>Dynamic Sign Language Recognition Through an Ensemble of Deep Learning Techniques</b><br>Ramakrishna Gandi, Syed Sahail, Shaik Sameer, M. Shaik Yaseen, N. Usman. <i>ICRTETM 2024, OSIET Chennai</i></div><span class="y">2024</span></li><li><div><b>A Hybrid Authentication Mechanism for Cloud Server to Enhance the Computational Efficiency</b><br>Ramakrishna Gandi, K. Durga Charan. <i>ICERECT, with IEEE</i></div><span class="y">2023</span></li><li><div><b>An IoT based Smart Object Picker using Android App</b><br>N. Sharmili, G. Ramakrishna, N. Swapna. <i>ICCSP, with IEEE</i></div><span class="y">2017</span></li><li><div><b>Comparative Analysis of Image Processing Algorithms for Visual Prosthesis</b><br>N. Sharmili, N. Swapna, G. Ramakrishna. <i>ICCSP, with IEEE</i> <span class="ix">WoS Core</span></div><span class="y">2017</span></li></ol>
+        <h4>Indian patents (published)</h4>
+        <ul class="plain">
+          <li>Patient Behavioral Analysis System based on Intelligent Healthcare and Internet of Things System <span class="muted">(2024)</span></li>
+          <li>Hybrid Neural Network and FPGA-Based System for High-Speed Image and Video Processing <span class="muted">(2025)</span></li>
+        </ul>
+        <h4>Book chapters (IGI Global)</h4>
+        <ul class="plain">
+          <li>"Data-Driven Rehabilitation Using Machine Learning Approaches for Adaptive Recovery and Treatment", <i>Predictive Algorithms for Rehabilitation and Assistive Systems</i>, Ch. 2, ISBN 9798337301945 <span class="ix">Scopus</span> <span class="muted">(2025)</span></li>
+          <li>"Navigating Green Computing Challenges and Strategies for Sustainable Solutions", <i>Computational Intelligence for Green Cloud Computing and Digital Waste Management</i>, Ch. 3, ISBN 9798369315521 <span class="ix">Scopus</span> <span class="muted">(2024)</span></li>
+        </ul>
+      </div>
+
+      <div class="sec" id="training">
+        <h2>Certifications &amp; Service</h2>
+        <ul class="plain">
+          <li><b>ICT Academy, IIT Kanpur (2025):</b> FDPs on Generative AI; Cyber Security using AI; Machine Learning with Python; Full Stack Development with PHP &amp; MySQL</li>
+          <li><b>NPTEL:</b> Cloud Computing; Cloud Computing and Distributed Systems (2019, 2024); Data Structures and Algorithms using Python; Fundamental Algorithms: Design and Analysis</li>
+          <li><b>Coursera:</b> Image Classification with CNNs using Keras; Facial Expression Recognition with Keras; Simple RNN with Keras; Programming for Everybody (Python)</li>
+          <li><b>Oracle (2007):</b> OCA certified; OCP qualified</li>
+          <li><b>Other:</b> Mobile Application Development, Cisco thingQbator (2022); Geocomputation and Geo-web Services, IIRS Dehradun / ISRO (2022); ServiceNow (2021); vSphere 6.0 virtualization (2017); STTP on Privacy Preserving Data Mining, SVNIT Surat (2015)</li>
+          <li><b>Reviewer:</b> IEEE CCET 2022 (IEEE MP Section); ICACAT-2018 (IEEE Bombay Section)</li>
+          <li><b>Technical Program Committee:</b> ICMLIP-2020; ICIIP-2017</li>
+        </ul>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer><div class="rule"></div>Gandi Ramakrishna · Curriculum Vitae · Updated November 2026</footer>
+</body>
+</html>
